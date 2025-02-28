@@ -3,7 +3,7 @@ name: Deploy WordPress to O2Switch
 on:
   push:
     branches:
-      - main  # Déclenche le workflow à chaque push sur la branche principale
+      - main  # Déclenche le workflow à chaque push sur la branche principal
 
 jobs:
   deploy:
