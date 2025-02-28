@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./ # Répertoire local (dossier du repo GitHub)
-          server-dir: /www/ # Répertoire cible sur O2Switch (adapte si nécessaire)
+          server-dir: public_html/handball-rochettois-test-wordpress # Répertoire cible sur O2Switch (adapte si nécessaire)
           protocol: ftp
           log-level: verbose
 
