@@ -35,6 +35,9 @@ wp-config.php
 # htaccess
 /.htaccess
 
+# recup-fichiers
+recup-fichiers.sh
+
 # All plugins
 #
 # Note: If you wish to whitelist plugins,

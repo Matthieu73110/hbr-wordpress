@@ -1,1 +1,27 @@
+name: Deploy WordPress to O2Switch
+
+on:
+  push:
+    branches:
+      - main  # Déclenche le workflow à chaque push sur la branche principale
+
+jobs:
+  deploy:
+    name: Deploy WordPress via FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./ # Répertoire local (dossier du repo GitHub)
+          server-dir: /www/ # Répertoire cible sur O2Switch (adapte si nécessaire)
+          protocol: ftp
+          log-level: verbose
 
