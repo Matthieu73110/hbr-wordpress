@@ -20,8 +20,23 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./ # Répertoire local (dossier du repo GitHub)
+          local-dir: ./
           server-dir: public_html/handball-rochettois-test-wordpress/ # Répertoire cible sur O2Switch (adapte si nécessaire)
           protocol: ftp
           log-level: verbose
-
+  send_email:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send success email if tests succeed
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com  
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Succès du déploiement"
+          body: "Le déploiement a réussi sur la machine distante."
+          to: "matthieu.fanget1@gmail.com"
+          from: "ci-notifications@example.com"
