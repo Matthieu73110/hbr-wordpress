@@ -20,8 +20,8 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: public_html/handball-rochettois-test-wordpress/ # Répertoire cible sur O2Switch (adapte si nécessaire)
+          local-dir: ./wp-content/*
+          server-dir: public_html/handball-rochettois-test-wordpress/wp-content/ # Répertoire cible sur O2Switch (adapte si nécessaire)
           protocol: ftp
           log-level: verbose
   send_email:
